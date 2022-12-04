@@ -1,0 +1,27 @@
+For Alert - 
+            cuteAlert({
+                type: "question",
+                title: "Sure??",
+                message: "Confirm Delete",
+                confirmText: "Okay",
+                cancelText: "Cancel",
+            }).then((e) => {
+                if (e == "confirm") {
+                    axios.delete(`/categorie/${cat.id}`).then((res) => {
+                        this.loadCat();
+                    });
+                    this.showAlert("warning", "Opps!", "Your Item Deleted");
+                } else {
+                    this.showAlert("info", "Good", "For Cancel It");
+                }
+            });
+=========================================================
+Common Js - 
+        showAlert(type, title, message) {
+            cuteToast({
+                type: type,
+                title: title,
+                message: message,
+                timer: 5000,
+            });
+        },
